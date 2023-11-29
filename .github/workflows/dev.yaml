@@ -1,0 +1,23 @@
+name: Sync dev -> uat
+
+on:
+  push:
+    branches:
+      - 'dev'
+
+jobs:
+  sync-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Merge dev -> uat
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: dev
+          target_branch: uat
+          github_token: ${{ secrets.LUQMAN_GA_TOKEN }}
+
+      - name: Print success message
+        run: echo "Success!!! DEV is now in UAT"
