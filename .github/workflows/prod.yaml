@@ -1,0 +1,15 @@
+name: Verify Prod
+
+on:
+  push:
+    branches:
+      - 'prod'
+
+jobs:
+  sync-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Print success message
+        run: echo "Success!!! PROD is good!"

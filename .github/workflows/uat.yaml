@@ -1,0 +1,23 @@
+name: Sync uat -> prod
+
+on:
+  push:
+    branches:
+      - 'uat'
+
+jobs:
+  sync-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Merge uat -> prod
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: uat
+          target_branch: prod
+          github_token: ${{ secrets.LUQMAN_GA_TOKEN }}
+
+      - name: Print success message
+        run: echo "Success!!! UAT is now in PROD"
