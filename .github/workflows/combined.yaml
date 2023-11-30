@@ -30,7 +30,6 @@ jobs:
 
   dev-to-uat-merge:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/dev'
     steps:
       - uses: actions/checkout@master
 
@@ -47,7 +46,6 @@ jobs:
 
   uat-to-prod-merge:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/uat'
     steps:
       - uses: actions/checkout@master
 
@@ -72,7 +70,6 @@ jobs:
 
   prod-branch:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/prod'
     steps:
       - uses: actions/checkout@master
 
