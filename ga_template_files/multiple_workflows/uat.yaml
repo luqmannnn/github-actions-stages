@@ -6,10 +6,20 @@ on:
       - 'uat'
 
 jobs:
-  sync-branch:
+  uat-to-prod-merge:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/uat'
     steps:
       - uses: actions/checkout@master
+
+      - name: Print app name
+        run: echo "APP NAME = ${{ vars.APPLICATION_NAME }}"
+
+      - name: Print env name
+        run: |
+          # Extract branch name from GITHUB_REF
+          ENV_NAME=$(echo "${GITHUB_REF#refs/heads/}")
+          echo "ENV NAME = ${{ ENV_NAME }}"
 
       - name: Merge uat -> prod
         uses: devmasx/merge-branch@master

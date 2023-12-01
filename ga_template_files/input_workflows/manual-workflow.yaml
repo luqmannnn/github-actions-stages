@@ -1,0 +1,39 @@
+name: Github actions manual input
+
+on:
+  workflow_dispatch:
+    inputs:
+      country:
+        type: choice
+        description: Holiday country selection
+        options: 
+        - australia
+        - brazil
+        - canada
+        - denmark
+        - england
+        - france
+        - germany
+        - hungary
+        - india
+        - japan
+        - kazakhstan
+        - lebanon
+        - malaysia
+        - norway
+        - oman
+        - peru
+
+      city:
+        required: true
+      first-time:
+        type: boolean
+        description: First time in country?
+      environment:
+        type: environment
+
+jobs:
+  inputs-print:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
