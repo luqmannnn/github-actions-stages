@@ -3,6 +3,8 @@
 
 name: Feature Branch to Prod Automatically
 
+## Change the branches and on strategies to suit your need
+
 on:
   push:
     branches:
@@ -31,7 +33,7 @@ jobs:
 
   dev-to-uat-merge:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/dev'
+    if: github.ref == 'refs/heads/dev' || contains(github.event.head_commit.message, 'Merge')
     steps:
       - uses: actions/checkout@master
 
