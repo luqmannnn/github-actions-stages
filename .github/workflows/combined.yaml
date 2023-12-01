@@ -3,6 +3,8 @@
 
 name: Feature Branch to Prod Automatically
 
+## Change the branches and on strategies to suit your needs
+
 on:
   push:
     branches:
