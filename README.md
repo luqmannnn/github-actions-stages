@@ -77,3 +77,20 @@ And now you are able to use the inputs in your code.
 
 
 ## Reusing another workflow
+Let's say now you have 5 different microservices that needs to run the same steps e.g. same deployment steps or same automation steps. Instead of copying the same steps across the 5 different repositories' workflow files, you can create a reusable workflow in one repository and have your 5 repositories call the [reusable workflow](https://docs.github.com/en/actions/using-workflows/reusing-workflows).
+
+For this, you may refer to the files in the ga_template_files/shared_workflows folder.
+
+The reusable workflow in this case can be found here: https://github.com/luqmannnn/reusable-workflow/blob/main/.github/workflows/reusable-workflow.yaml. We can see that it requires 3 different inputs:
+1. user name
+2. address
+3. age
+
+We will need to define these in our shared_workflow file or get inputs from user before triggering.
+
+If successful, it would look something like this:
+<img width="1435" alt="Screenshot 2023-12-02 at 12 34 32 AM" src="https://github.com/luqmannnn/github-actions-stages/assets/9068525/b20d5f29-bd6c-46f9-8aa1-f9b62daa5b3b">
+
+We can see the variables passed from our workflow to the shared workflow:
+<img width="1434" alt="Screenshot 2023-12-02 at 12 35 12 AM" src="https://github.com/luqmannnn/github-actions-stages/assets/9068525/c647f823-fbf7-4a29-8875-44d0a5d339b9">
+
