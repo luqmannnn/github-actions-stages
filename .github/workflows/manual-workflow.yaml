@@ -50,13 +50,13 @@ jobs:
       - uses: actions/checkout@master
 
       - name: Country name
-        run: echo $country
+        run: echo ${{ inputs.country }}
 
       - name: City name
-        run: echo $city
+        run: echo ${{ inputs.city }}
 
       - name: Is this your first time in this country & city?
-        run: echo $first-time
+        run: echo ${{ inputs.first-time }}
 
       - name: What environment is your code in?
-        run: echo $environment
+        run: echo ${{ inputs.environment }}
