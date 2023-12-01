@@ -60,5 +60,20 @@ And finally a detailed look at what happens after the PROD code has been updated
 <img width="1437" alt="Screenshot 2023-12-01 at 4 34 42 PM" src="https://github.com/luqmannnn/github-actions-stages/assets/9068525/fb7f19af-7cc4-4394-8177-c0ca183d989e">
 
 ## Inputs in your workflow
+Let's say now you want to trigger a CI/CD workflow which requires inputs that can be used in your pipeline. You can do this using [workflow_dispatch](https://github.blog/changelog/2020-07-06-github-actions-manual-triggers-with-workflow_dispatch/) > [inputs](https://github.blog/changelog/2021-11-10-github-actions-input-types-for-manual-workflows/)
+
+For this, you may refer to the files in the ga_template_files/input_workflows folder.
+
+Under the Actions tab, after clicking the input workflow from the left side of the page, you can see a dropdown list button calle "Run workflow" on the right. Clicking that will give you the opportunity to provide inputs as listed in the yaml file.
+
+<img width="1436" alt="Screenshot 2023-12-01 at 4 48 58 PM" src="https://github.com/luqmannnn/github-actions-stages/assets/9068525/535a130a-449f-485e-a2d5-199ff9b79e3c">
+
+Let's try providing some inputs like that below and running the workflow.
+
+<img width="362" alt="Screenshot 2023-12-01 at 4 50 09 PM" src="https://github.com/luqmannnn/github-actions-stages/assets/9068525/0c33e5f9-e899-4888-a0b3-3d3f20fec1a6">
+
+And now you are able to use the inputs in your code.
+<img width="1429" alt="Screenshot 2023-12-01 at 4 54 42 PM" src="https://github.com/luqmannnn/github-actions-stages/assets/9068525/fe0090c1-ce90-4e1e-a8b4-51d7fbb40067">
+
 
 ## Reusing another workflow
