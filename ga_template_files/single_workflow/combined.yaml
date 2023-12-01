@@ -3,6 +3,8 @@
 
 name: Feature Branch to Prod Automatically
 
+## Change the branches and on strategies to suit your needs
+
 on:
   push:
     branches:
@@ -30,6 +32,7 @@ jobs:
   ## Merge code only if pull request to dev branch is completed
 
   dev-to-uat-merge:
+    needs: env-print
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/dev'
     steps:
@@ -55,6 +58,7 @@ jobs:
         run: echo "Success!!! DEV is now in UAT"
 
   uat-to-prod-merge:
+    needs: dev-to-uat-merge
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/dev'
     steps:
@@ -84,6 +88,7 @@ jobs:
         run: echo "Success!!! UAT is now in PROD"
 
   prod-branch:
+    needs: uat-to-prod-merge
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/dev'
     steps:
