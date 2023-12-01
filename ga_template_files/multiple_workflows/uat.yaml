@@ -1,5 +1,7 @@
 name: Sync uat -> prod
 
+## Change the branches and on strategies to suit your needs
+
 on:
   push:
     branches:
@@ -19,7 +21,11 @@ jobs:
         run: |
           # Extract branch name from GITHUB_REF
           ENV_NAME=$(echo "${GITHUB_REF#refs/heads/}")
-          echo "ENV NAME = ${{ ENV_NAME }}"
+          echo "ENV NAME = $ENV_NAME"
+
+      ## Do other actions below before merging
+      ## e.g. unit testing, vulnerability scanning etc.
+      ## Afterwards, you can do deployment in UAT
 
       - name: Merge uat -> prod
         uses: devmasx/merge-branch@master

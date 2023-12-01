@@ -1,5 +1,7 @@
 name: Sync dev -> uat
 
+## Change the branches and on strategies to suit your needs
+
 on:
   push:
     branches:
@@ -24,13 +26,19 @@ jobs:
         run: |
           # Extract branch name from GITHUB_REF
           ENV_NAME=$(echo "${GITHUB_REF#refs/heads/}")
-          echo "ENV NAME = ${{ ENV_NAME }}"
+          echo "ENV NAME = $ENV_NAME"
 
   dev-to-uat-merge:
+    needs: dev-env-print
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/dev'
     steps:
       - uses: actions/checkout@master
+
+      ## Do other actions below before merging
+      ## e.g. unit testing, vulnerability scanning etc.
+      ## It is here that you may want to do code deployments in dev env after
+      ## verifications are done in branches
 
       - name: Merge dev -> uat
         uses: devmasx/merge-branch@master
