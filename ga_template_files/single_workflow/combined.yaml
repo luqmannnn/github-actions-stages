@@ -42,6 +42,7 @@ jobs:
       ## e.g. unit testing, vulnerability scanning etc.
       ## It is here that you may want to do code deployments in dev env after
       ## verifications are done in 
+      ## You may also do deployments here before merging code
 
       - name: Merge dev -> uat
         uses: devmasx/merge-branch@master
@@ -50,9 +51,6 @@ jobs:
           from_branch: dev
           target_branch: uat
           github_token: ${{ secrets.LUQMAN_GA_TOKEN }}
-
-      ## After 
-      ## e.g. unit testing, vulnerability scanning etc.
 
       - name: Print success message
         run: echo "Success!!! DEV is now in UAT"
